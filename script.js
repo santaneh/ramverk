@@ -1,13 +1,12 @@
 window.onload = function() {
-    // Lyssna efter händelser
     var clicked = false
     var team_members = document.getElementsByClassName("team-member");
     for (let member of team_members){
         member.addEventListener('mouseenter', function(){
-        this.classList.add('hovering');
+        effectOn(this)
     })
     member.addEventListener('mouseleave', function(){
-        this.classList.remove('hovering');
+        effectOff(this)
     });
     member.addEventListener('click', function(event){
         console.log(this)
@@ -34,19 +33,24 @@ window.onload = function() {
 }
 };
 var editTitle = function(e) {
-    // Ändra "team-title"
     var text = e.querySelector('#prompt').value;
     e.querySelector('.team-title').innerHTML = text
     console.log("changed")
 };
 
-function effectOn(item){
-    // Rita en ram runt personen, kanske lite drop shadow?
-    //console.log(item);
-    //item.style.backgroundColor = "red";
+function effectOn(e){
+    //e.classList.add('hovering');
+    //visste inte om annvändning av classList var "cheating" i coding challenge så gör så här i stället 
+    e.style.boxShadow = "7px 7px 5px #ccc";
+    e.style.border = "2px solid black";
+    e.style.borderRadius = "10px";
 
 }
 
-function effectOff(id){
-    // Stäng av effekten när musen inte längre är ovanför personen
+function effectOff(e){
+    //e.classList.remove('hovering');
+    //visste inte om annvändning av classList var "cheating" coding challenge så gör så här i stället
+    e.style.boxShadow = "";
+    e.style.border = "";
+    e.style.borderRadius = "";
 }
